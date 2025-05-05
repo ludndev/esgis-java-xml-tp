@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is Eclipse Metro/4.0.4 (RELEASE-4.0.4-ec440d5; 2024-06-28T10:09:00+0000) XMLWS-Impl/4.0.3 XMLWS-API/4.0.2 XMLB-Impl/4.0.5 XMLB-API/4.0.2 git-revision#ec440d5. --><xs:schema xmlns:tns="http://service.alert.example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.alert.example.com/">
+
+<xs:element name="alert" type="tns:alert"/>
+
+<xs:element name="listAlerts" type="tns:listAlerts"/>
+
+<xs:element name="listAlertsResponse" type="tns:listAlertsResponse"/>
+
+<xs:element name="processAlert" type="tns:processAlert"/>
+
+<xs:element name="processAlertResponse" type="tns:processAlertResponse"/>
+
+<xs:complexType name="listAlerts">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listAlertsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:alert" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="alert">
+<xs:sequence>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdatedAt" type="tns:zonedDateTime" minOccurs="0"/>
+<xs:element name="platform" type="xs:string" minOccurs="0"/>
+<xs:element name="raisedAt" type="tns:zonedDateTime" minOccurs="0"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="zonedDateTime" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="processAlert">
+<xs:sequence>
+<xs:element name="arg0" type="tns:alert" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="processAlertResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
