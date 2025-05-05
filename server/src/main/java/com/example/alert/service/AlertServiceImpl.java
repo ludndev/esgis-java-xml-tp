@@ -2,6 +2,7 @@ package com.example.alert.service;
 
 import com.example.alert.model.Alert;
 import jakarta.jws.WebService;
+import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,7 +17,13 @@ public class AlertServiceImpl implements AlertService {
     private final ConcurrentHashMap<String, List<Alert>> alertsByPlatform = new ConcurrentHashMap<>();
 
     @Override
-    public String processAlert(Alert alert) {
+    public String processAlert(@WebParam(name = "arg0") Alert alert) {
+        if (alert == null) {
+            // Log a warning and return or throw a custom exception
+            System.err.println("Received null Alert object");
+            return; // or throw new IllegalArgumentException("Alert cannot be null");
+        }
+
         String platform = alert.getPlatform();
         String code = alert.getCode();
         String status = alert.getStatus();

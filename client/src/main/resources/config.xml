@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- Intervalle de scan des fichiers d'alerte en secondes -->
-    <scanInterval>30</scanInterval>
+    <scanInterval>10</scanInterval>
     
     <!-- Répertoire à surveiller pour les fichiers d'alerte -->
     <watchDirectory>./tmp/watch</watchDirectory>
@@ -10,7 +10,7 @@
     <backupDirectory>./tmp/backup</backupDirectory>
     
     <!-- Intervalle de sauvegarde des alertes en secondes -->
-    <backupInterval>300</backupInterval>
+    <backupInterval>30</backupInterval>
     
     <!-- URL du service web d'alertes -->
     <serviceUrl>http://localhost:8080/alert-service/alerts</serviceUrl>
