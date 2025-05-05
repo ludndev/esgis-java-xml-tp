@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example.alert</groupId>
+    <artifactId>alert-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Jakarta JAX-WS API -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- Jakarta JAXB API -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <!-- Jakarta JAXB Runtime -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Jakarta Activation API (needed for JAXB) -->
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.1.2</version>
+        </dependency>
+
+        <!-- JAX-WS Runtime -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+    <groupId>com.sun.xml.ws</groupId>
+    <artifactId>jaxws-maven-plugin</artifactId>
+    <version>4.0.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>wsimport</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <wsdlUrls>
+            <wsdlUrl>http://localhost:8080/alert-service/alerts?wsdl</wsdlUrl>
+        </wsdlUrls>
+        <verbose>true</verbose>
+        <extension>true</extension>
+        <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+        <packageName>com.example.alert.client</packageName>
+        <xjcArgs>
+            <xjcArg>-Xsetters</xjcArg>
+        </xjcArgs>
+    </configuration>
+    <dependencies>
+        <dependency>
+            <groupId>org.jvnet.jaxb</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+    </dependencies>
+</plugin>
+
+        </plugins>
+
+        <!-- Tell Maven to compile generated sources -->
+        <resources>
+            <resource>
+                <directory>${project.build.directory}/generated-sources/wsimport</directory>
+            </resource>
+        </resources>
+    </build>
+</project>

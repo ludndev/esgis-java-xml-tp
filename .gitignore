@@ -1,0 +1,36 @@
+# Maven build directory
+target/
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Build artifacts
+build/
+bin/
+out/
